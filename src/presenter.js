@@ -6,6 +6,7 @@ const genero_input = document.querySelector("#genero");
 const idioma_input = document.querySelector("#idioma");
 const form = document.querySelector("#saludar-form");
 const div = document.querySelector("#resultado-div");
+const div3 = document.querySelector("#resultado-div3");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -14,42 +15,84 @@ form.addEventListener("submit", (event) => {
   const edad = edad_input.value;
   const genero = genero_input.value;
   const idioma = idioma_input.value;
+  let fechaHoraActual = new Date();
+  let opciones = { hour: '2-digit', minute: '2-digit', hour12: false };
+  const soloHoraS = fechaHoraActual.toLocaleTimeString(undefined, opciones).split(":")[0];
+  let soloHora = parseInt(soloHoraS);
   
-  if(idioma==='Esp')
-  {
-    if (edad>=30) {
-      if(genero==='M')
-      {
-        div.innerHTML = "<p> Hola senor " + saludar(nombre) + "</p>";
+  if ((soloHora >= 18 && soloHora <=23) || (soloHora >= 0 && soloHora <6)) {
+    if (idioma === 'Esp') {
+      if (edad >= 30) {
+        if (genero === 'M') {
+          div.innerHTML = "<p> Buenas noches senor " + saludar(nombre) + "</p>";
+        } else if (genero === "F") {
+          div.innerHTML = "<p> Buenas noches senora " + saludar(nombre) + "</p>";
+        }
+      } else {
+        div.innerHTML = "<p> Buenas noches " + saludar(nombre) + "</p>";
       }
-      else if(genero==="F")
-      {
-        div.innerHTML = "<p> Hola senora " + saludar(nombre) + "</p>";
+    } else if (idioma === 'Eng') {
+      if (edad >= 30) {
+        if (genero === 'M') {
+          div.innerHTML = "<p> Good evening mister " + saludar(nombre) + "</p>";
+        } else if (genero === "F") {
+          div.innerHTML = "<p> Good evening miss " + saludar(nombre) + "</p>";
+        }
+      } else {
+        div.innerHTML = "<p> Good evening " + saludar(nombre) + "</p>";
       }
-      
-    }  
-    else {
-      div.innerHTML = "<p> Hola " + saludar(nombre) + "</p>";
-    } 
-  }
-  else if(idioma==='Eng')
-  {
-    if (edad>=30) {
-      if(genero==='M')
-      {
-        div.innerHTML = "<p> Hello mister " + saludar(nombre) + "</p>";
-      }
-      else if(genero==="F")
-      {
-        div.innerHTML = "<p> Hello miss " + saludar(nombre) + "</p>";
-      }
-      
-    }  
-    else {
-      div.innerHTML = "<p> Hello " + saludar(nombre) + "</p>";
     }
-
+  } else if (soloHora >= 6 && soloHora < 12) {
+    if (idioma === 'Esp') {
+      if (edad >= 30) {
+        if (genero === 'M') {
+          div.innerHTML = "<p> Buenos dias senor " + saludar(nombre) + "</p>";
+        } else if (genero === "F") {
+          div.innerHTML = "<p> Buenos dias senora " + saludar(nombre) + "</p>";
+        }
+      } else {
+        div.innerHTML = "<p> Buenos dias " + saludar(nombre) + "</p>";
+      }
+    } else if (idioma === 'Eng') {
+      if (edad >= 30) {
+        if (genero === 'M') {
+          div.innerHTML = "<p> Good morning mister " + saludar(nombre) + "</p>";
+        } else if (genero === "F") {
+          div.innerHTML = "<p> Good morning miss " + saludar(nombre) + "</p>";
+        }
+      } else {
+        div.innerHTML = "<p> Good morning " + saludar(nombre) + "</p>";
+      }
+    }
+  } else if (soloHora >= 12 && soloHora < 18) {
+    if (idioma === 'Esp') {
+      if (edad >= 30) {
+        if (genero === 'M') {
+          div.innerHTML = "<p> Buenas tardes senor " + saludar(nombre) + "</p>";
+        } else if (genero === "F") {
+          div.innerHTML = "<p> Buenas tardes senora " + saludar(nombre) + "</p>";
+        }
+      } else {
+        div.innerHTML = "<p> Buenas tardes " + saludar(nombre) + "</p>";
+      }
+    } else if (idioma === 'Eng') {
+      if (edad >= 30) {
+        if (genero === 'M') {
+          div.innerHTML = "<p> Good afternoon mister " + saludar(nombre) + "</p>";
+        } else if (genero === "F") {
+          div.innerHTML = "<p> Good afternoon miss " + saludar(nombre) + "</p>";
+        }
+      } else {
+        div.innerHTML = "<p> Good afternoon " + saludar(nombre) + "</p>";
+      }
+    }
   }
+  
+
+  
+  div3.innerHTML = "<p>" + soloHora + "</p>";
+
+
   
   
   
