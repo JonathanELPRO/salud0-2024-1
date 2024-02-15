@@ -15,19 +15,40 @@ form.addEventListener("submit", (event) => {
   const genero = genero_input.value;
   const idioma = idioma_input.value;
   
-  if (edad>=30) {
-    if(genero==='M')
-    {
-      div.innerHTML = "<p> Hola senor " + saludar(nombre) + "</p>";
+  if(idioma==='Esp')
+  {
+    if (edad>=30) {
+      if(genero==='M')
+      {
+        div.innerHTML = "<p> Hola senor " + saludar(nombre) + "</p>";
+      }
+      else if(genero==="F")
+      {
+        div.innerHTML = "<p> Hola senora " + saludar(nombre) + "</p>";
+      }
+      
+    }  
+    else {
+      div.innerHTML = "<p> Hola " + saludar(nombre) + "</p>";
+    } 
+  }
+  else if(idioma==='Eng')
+  {
+    if (edad>=30) {
+      if(genero==='M')
+      {
+        div.innerHTML = "<p> Hello mister " + saludar(nombre) + "</p>";
+      }
+      else if(genero==="F")
+      {
+        div.innerHTML = "<p> Hello miss " + saludar(nombre) + "</p>";
+      }
+      
+    }  
+    else {
+      div.innerHTML = "<p> Hello " + saludar(nombre) + "</p>";
     }
-    else if(genero==="F")
-    {
-      div.innerHTML = "<p> Hola senora " + saludar(nombre) + "</p>";
-    }
-    
-  }  
-  else {
-    div.innerHTML = "<p> Hola " + saludar(nombre) + "</p>";
+
   }
   
   
