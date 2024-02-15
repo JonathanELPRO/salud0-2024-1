@@ -15,12 +15,13 @@ form.addEventListener("submit", (event) => {
   const edad = edad_input.value;
   const genero = genero_input.value;
   const idioma = idioma_input.value;
+  console.log(genero)
   let fechaHoraActual = new Date();
   let opciones = { hour: '2-digit', minute: '2-digit', hour12: false };
-  const soloHoraS = fechaHoraActual.toLocaleTimeString(undefined, opciones).split(":")[0];
+  let soloHoraS = fechaHoraActual.toLocaleTimeString(undefined, opciones).split(":")[0];
   let soloHora = parseInt(soloHoraS);
   
-  if ((soloHora >= 18 && soloHora <=23) || (soloHora >= 0 && soloHora <6)) {
+  if ((soloHora >= 18 && soloHora <=23) ) {
     if (idioma === 'Esp') {
       if (edad >= 30) {
         if (genero === 'M') {
@@ -42,7 +43,7 @@ form.addEventListener("submit", (event) => {
         div.innerHTML = "<p> Good evening " + saludar(nombre) + "</p>";
       }
     }
-  } else if (soloHora >= 6 && soloHora < 12) {
+  } else if (soloHora >= 0 && soloHora <=11) {
     if (idioma === 'Esp') {
       if (edad >= 30) {
         if (genero === 'M') {
@@ -64,7 +65,7 @@ form.addEventListener("submit", (event) => {
         div.innerHTML = "<p> Good morning " + saludar(nombre) + "</p>";
       }
     }
-  } else if (soloHora >= 12 && soloHora < 18) {
+  } else if (soloHora >= 12 && soloHora <= 17) {
     if (idioma === 'Esp') {
       if (edad >= 30) {
         if (genero === 'M') {
